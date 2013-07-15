@@ -424,7 +424,6 @@ if(!$quest = load_cache(QUEST_PAGE, $cache_key))
 				}
 	}
 	unset($rows);
-
 	// ГО
 	$rows = $DB->select('
 		SELECT g.entry, g.name
@@ -570,14 +569,14 @@ if(!$quest = load_cache(QUEST_PAGE, $cache_key))
 
 global $page;
 $page = array(
-	'Mapper' => false,
+	'Mapper' => true,
 	'Book' => false,
 	'Title' => $quest['Title'].' - '.$smarty->get_config_vars('Quests'),
 	'tab' => 0,
 	'type' => 5,
 	'typeid' => $quest['Id'],
 	'username' => $_SESSION['username'],
-	'path' => path(0, 5) // TODO
+	'path' => path(0, 3, $quest['maincat'], $quest['category']) // TODO
 );
 $smarty->assign('page', $page);
 

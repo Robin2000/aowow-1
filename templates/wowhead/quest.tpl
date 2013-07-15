@@ -244,7 +244,8 @@
 							onmouseout="Tooltip.hide()">{#Related#}</span>
 					</td></tr>
 {/if}
-<tr><td><div class="infobox-spacer"></div><div id="infobox-sticky-ss"><center><img src="/images/screenshots/thumb/{if $quest.sscreen == NULL}noscreen{$locale}.png{else}{$quest.sscreen}{/if}"></center></div></td></tr>
+<tr><th id="infobox-">{#Screenshots_tab#}</th></tr>
+<tr><td><div class="infobox-spacer"></div><center><div id="infobox-sticky-ss"></div></center></td></tr>
 				</table>
 
 				<div class="text">
@@ -405,7 +406,15 @@
 
 <h3>{#Connected_zones#}</h3>
 {#Zone_desc#} <b>{$quest.zone}</b>
-<br />							
+<br />	
+				<div id="mapper-generic"></div>
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<script type="text/javascript">
+					var myMapper = new Mapper({ldelim}parent: 'mapper-generic', zone: '{$quest.ZoneOrSort}', coords:[[{$quest.questcordsy},{$quest.questcordsx}]]{rdelim});
+					gE(ge('locations'), 'a')[0].onclick();
+				</script>
+				<br>
+					
 {if $quest.Details}
 						<h3>{#Description#}</h3>
 						{$quest.Details}
