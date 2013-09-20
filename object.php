@@ -26,7 +26,7 @@ if(!$object = load_cache(OBJECT_PAGE, $cache_key))
 	// Начиниают квесты...
 	$rows_qs = $DB->select('
 		SELECT o.?#
-		FROM gameobject_questrelation q, quest_template o
+		FROM gameobject_queststarter q, quest_template o
 		WHERE
 			q.id = ?d
 			AND o.Id = q.quest
@@ -43,9 +43,9 @@ if(!$object = load_cache(OBJECT_PAGE, $cache_key))
 	unset($rows_qs);
 
 	// Заканчивают квесты...
-	$rows_qe = $DB->select('
+	/*$rows_qe = $DB->select('
 		SELECT ?#
-		FROM gameobject_involvedrelation i, quest_template q
+		FROM gameobject_questender i, quest_template q
 		WHERE
 			i.id = ?d
 			AND q.Id = i.quest
@@ -60,6 +60,7 @@ if(!$object = load_cache(OBJECT_PAGE, $cache_key))
 			$object['ends'][] = GetQuestInfo($row, 0xFFFFFF);
 	}
 	unset($rows_qe);
+	*/
 	$obj['sscreen'] = $DB->selectCell('SELECT body FROM aowow_screenshots WHERE typeid=?d', $id);
 	// Цель критерии
 	$rows = $DB->select('

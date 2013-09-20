@@ -71,7 +71,7 @@ if(!$spell = load_cache(SPELL_PAGE, $cache_key))
 		else if($row['ChannelInterruptFlags'])
 			$spell['casttime'] = 'Channeled';
 		else
-			$spell['casttime'] = 'Sofort';
+			$spell['casttime'] = 'Instant';
 
 		// Cooldown
 		if ($row['cooldown'] > 0)
@@ -508,7 +508,7 @@ if(!$spell = load_cache(SPELL_PAGE, $cache_key))
 			SELECT c.?#
 			{ , Title_loc?d AS Title_loc }
 			FROM quest_template c
-			{ LEFT JOIN (locales_quest l) ON c.entry = l.entry AND ? }
+			{ LEFT JOIN (locales_quest l) ON c.Id = l.Id AND ? }
 			WHERE
 				RewardSpell = ?d
 				OR RewardSpellCast = ?d

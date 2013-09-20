@@ -163,7 +163,7 @@ if(!$item = load_cache(ITEM_PAGE, $cache_key))
 	$rows_qr = $DB->select('
 			SELECT q.?# {, l.Title_loc?d AS Title_loc}
 			FROM quest_template q
-			{ LEFT JOIN (locales_quest l) ON l.entry=q.Id AND ? }
+			{ LEFT JOIN (locales_quest l) ON l.Id=q.Id AND ? }
 			WHERE
 				RequiredItemId1=?d
 				OR RequiredItemId2=?d
@@ -187,7 +187,7 @@ if(!$item = load_cache(ITEM_PAGE, $cache_key))
 	$rows_qp = $DB->select('
 			SELECT q.?# {, l.Title_loc?d AS Title_loc}
 			FROM quest_template q
-			{ LEFT JOIN (locales_quest l) ON l.entry=q.Id AND ? }
+			{ LEFT JOIN (locales_quest l) ON l.Id=q.Id AND ? }
 			WHERE SourceItemId=?d
 		',
 		$quest_cols[2],
@@ -207,7 +207,7 @@ if(!$item = load_cache(ITEM_PAGE, $cache_key))
 	$rows_qrw = $DB->select('
 			SELECT q.?# {, l.Title_loc?d AS Title_loc}
 			FROM quest_template q 
-			{ LEFT JOIN (locales_quest l) ON l.entry=q.Id AND ? }
+			{ LEFT JOIN (locales_quest l) ON l.Id=q.Id AND ? }
 			WHERE
 				RewardItemId1=?d
 				OR RewardItemId2=?d

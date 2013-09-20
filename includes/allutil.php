@@ -1,6 +1,6 @@
 <?php
 require_once('configs/config.php');
-error_reporting(0);
+error_reporting(1);
 ini_set('serialize_precision', 4);
 session_start();
 // Префикс

@@ -380,7 +380,7 @@ if(!$npc = load_cache(NPC_PAGE, $cache_key))
 		$rows_qs = $DB->select('
                 	SELECT q.?#
                 FROM quest_template q
-                LEFT JOIN creature_questrelation c on q.id = c.quest
+                LEFT JOIN creature_queststarter c on q.id = c.quest
                 WHERE
                     c.id=?
              	',
@@ -412,7 +412,7 @@ if(!$npc = load_cache(NPC_PAGE, $cache_key))
 $rows_qe = $DB->select('
         SELECT q.?#
         FROM quest_template q
-        LEFT JOIN creature_involvedrelation c on q.id = c.quest
+        LEFT JOIN creature_questender c on q.id = c.quest
         WHERE
                 c.id=?
         ',
